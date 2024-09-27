@@ -5,18 +5,21 @@
 #include "Point2D.h"
 #include "enums.h"
 #include "TriangleParameters.h"
+#include "globalParametrs.h"
+
+class AbstactTriangleRealization;
 
 class AbstractTriangle
 {
-    std::shared_ptr<TriangleParameters> triangle_;
+    typePointer<AbstactTriangleRealization> pounterRealization;
 
 public:
 
-    AbstractTriangle(const std::shared_ptr<TriangleParameters>& triangle);
+    AbstractTriangle(const typePointer<TriangleParameters>& triangle);
 
-    std::unique_ptr< std::vector<double> > GetSides() const;
+    typePointer< std::vector<double> > GetSides() const;
 
-    std::unique_ptr<std::vector<Point2D>> GetLPoints() const;
+    typePointer<std::vector<Point2D>> GetLPoints() const;
 
     virtual TriangleType GetType() = 0;
 

@@ -1,14 +1,19 @@
 #include "AbstractTriangle.h"
 #include "ObjectIsCanNotCreated.h"
+#include "AbstactTriangleRealization.h"
 
-AbstractTriangle::AbstractTriangle(const std::shared_ptr<TriangleParameters>& triangle): triangle_(triangle) {}
 
-std::unique_ptr< std::vector<double> > AbstractTriangle::GetSides() const
+AbstractTriangle::AbstractTriangle(const typePointer<TriangleParameters>& triangle)
 {
-   return triangle_->GetSides();
+    pounterRealization = new AbstactTriangleRealization(triangle);
 }
 
-std::unique_ptr<std::vector<Point2D>> AbstractTriangle::GetLPoints() const
+typePointer< std::vector<double> > AbstractTriangle::GetSides() const
 {
-    return triangle_->GetPoints();
+   return pounterRealization->GetSides();
+}
+
+typePointer<std::vector<Point2D>> AbstractTriangle::GetLPoints() const
+{
+    return pounterRealization->GetPoints();
 }
